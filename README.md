@@ -16,6 +16,7 @@ Trong lĩnh vực y tế, GAN được ứng dụng để tạo ra ảnh tổng 
 # CNN
 
 Convolutional Neural Network (CNN) là một kiến trúc mạng nơ-ron sâu được thiết kế đặc biệt cho các bài toán xử lý ảnh và nhận dạng mẫu trong dữ liệu dạng lưới hai chiều. CNN hoạt động dựa trên nguyên lý sử dụng các lớp tích chập (convolutional layers) để tự động trích xuất các đặc trưng từ hình ảnh đầu vào, sau đó kết hợp với các lớp pooling và fully connected để thực hiện quá trình phân loại. Khác với các mạng nơ-ron truyền thống, CNN có khả năng nhận diện các đặc trưng không gian trong ảnh như đường viền, hình dạng, hoặc kết cấu mà không cần thiết kế thủ công, giúp giảm thiểu số lượng tham số và tăng hiệu quả huấn luyện mô hình.
+
 Trong phạm vi dự án này, CNN được sử dụng như một bộ phân loại để phân biệt giữa ảnh y tế thật và ảnh giả do GAN tạo ra. Mô hình CNN sẽ học cách nhận diện các đặc điểm đặc trưng mà ảnh giả không thể tái tạo hoàn hảo như ảnh thật, từ đó đưa ra dự đoán chính xác. Việc kết hợp CNN với GAN tạo thành một quy trình khép kín, trong đó GAN cung cấp dữ liệu tổng hợp để kiểm thử độ nhạy và khả năng phát hiện của CNN. Qua đó, nhóm có thể đánh giá hiệu quả của mô hình GAN trong việc sinh ảnh và đồng thời kiểm chứng năng lực phân loại của CNN trong các ứng dụng y tế, nơi mà tính chính xác và độ tin cậy là vô cùng quan trọng.
 
 
