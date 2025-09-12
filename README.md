@@ -6,6 +6,8 @@
 4. Nguyễn Vinh Phúc
 5. Nguyễn Trọng Nhân
 
+Cùng với sự hỗ trợ của **TA Nguyễn Duy Tân**
+
 Dự án này nhằm mục đích sử dụng mạng đối kháng sinh **(GAN - Generative Adversarial Network)** để tạo ra ảnh y tế giả (fake medical images) và sau đó sử dụng mạng nơ-ron tích chập **(CNN - Convolutional Neural Network)** để phân loại và phân biệt ảnh thật và ảnh giả.
 Ứng dụng của phương pháp này có thể giúp cải thiện hiệu suất và độ chính xác trong việc phát hiện gian lận trong dữ liệu y tế, tăng cường dữ liệu cho các mô hình học sâu, hoặc đánh giá độ tin cậy của mô hình trong các bài toán nhận dạng hình ảnh y học. Dataset được nhóm tham khảo trên kaggle theo đường dẫn sau: [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia?select=chest_xray), [Dataset](https://drive.google.com/drive/folders/1UaS3t29I_5EK99yVaaxd8sNKlCrpPFsD?usp=sharing).
 # GAN
