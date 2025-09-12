@@ -10,6 +10,7 @@ Cùng với sự hỗ trợ của **TA Nguyễn Duy Tân**
 
 Dự án này nhằm mục đích sử dụng mạng đối kháng sinh **(GAN - Generative Adversarial Network)** để tạo ra ảnh y tế giả (fake medical images) và sau đó sử dụng mạng nơ-ron tích chập **(CNN - Convolutional Neural Network)** để phân loại và phân biệt ảnh thật và ảnh giả.
 Ứng dụng của phương pháp này có thể giúp cải thiện hiệu suất và độ chính xác trong việc phát hiện gian lận trong dữ liệu y tế, tăng cường dữ liệu cho các mô hình học sâu, hoặc đánh giá độ tin cậy của mô hình trong các bài toán nhận dạng hình ảnh y học. Dataset được nhóm tham khảo trên kaggle theo đường dẫn sau: [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia?select=chest_xray), [Dataset](https://drive.google.com/drive/folders/1UaS3t29I_5EK99yVaaxd8sNKlCrpPFsD?usp=sharing).
+
 # GAN
 Generative Adversarial Network (GAN) là một kiến trúc mạng học sâu, được thiết kế để tạo ra dữ liệu giả có tính chân thực cao. Mô hình GAN bao gồm hai mạng con chính là Generator (mạng sinh) và Discriminator (mạng phân biệt), hoạt động đối kháng với nhau trong quá trình huấn luyện. Generator cố gắng tạo ra các mẫu dữ liệu giả sao cho giống dữ liệu thật nhất có thể, trong khi Discriminator có nhiệm vụ phân biệt giữa dữ liệu thật và dữ liệu giả do Generator tạo ra. Cả hai mạng được huấn luyện đồng thời theo cơ chế cạnh tranh: khi Discriminator càng phân biệt tốt thì Generator phải càng tinh vi hơn để đánh lừa được nó. Qua nhiều vòng huấn luyện, Generator sẽ học được cách tạo ra dữ liệu giả với chất lượng ngày càng cao, đến mức khó có thể phân biệt được với dữ liệu thật.
 
@@ -20,9 +21,6 @@ Trong lĩnh vực y tế, GAN được ứng dụng để tạo ra ảnh tổng 
 Convolutional Neural Network (CNN) là một kiến trúc mạng nơ-ron sâu được thiết kế đặc biệt cho các bài toán xử lý ảnh và nhận dạng mẫu trong dữ liệu dạng lưới hai chiều. CNN hoạt động dựa trên nguyên lý sử dụng các lớp tích chập (convolutional layers) để tự động trích xuất các đặc trưng từ hình ảnh đầu vào, sau đó kết hợp với các lớp pooling và fully connected để thực hiện quá trình phân loại. Khác với các mạng nơ-ron truyền thống, CNN có khả năng nhận diện các đặc trưng không gian trong ảnh như đường viền, hình dạng, hoặc kết cấu mà không cần thiết kế thủ công, giúp giảm thiểu số lượng tham số và tăng hiệu quả huấn luyện mô hình.
 
 Trong phạm vi dự án này, CNN được sử dụng như một bộ phân loại để phân biệt giữa ảnh y tế thật và ảnh giả do GAN tạo ra. Mô hình CNN sẽ học cách nhận diện các đặc điểm đặc trưng mà ảnh giả không thể tái tạo hoàn hảo như ảnh thật, từ đó đưa ra dự đoán chính xác. Việc kết hợp CNN với GAN tạo thành một quy trình khép kín, trong đó GAN cung cấp dữ liệu tổng hợp để kiểm thử độ nhạy và khả năng phát hiện của CNN. Qua đó, nhóm có thể đánh giá hiệu quả của mô hình GAN trong việc sinh ảnh và đồng thời kiểm chứng năng lực phân loại của CNN trong các ứng dụng y tế, nơi mà tính chính xác và độ tin cậy là vô cùng quan trọng.
-
-Với mô hình CNN, nhóm đã hiện thực một mô hình CNN đơn giản, có cấu tạo gồm 4 convolution blocks để tăng số lượng kênh từ 1 -> 32 -> 64 -> 128 -> 256. Bên trong convolution block là một hệ thống gồm
-2 layers, cấu tạo của mỗi layer là Conv2D -> BatchNorm -> SiLU. 
 
 # KẾT QUẢ
 
@@ -36,4 +34,19 @@ Thông qua mô hình GAN, nhóm đã tạo ra được 2550 ảnh x-ray giả đ
 Những bức ảnh này sau đó đã được tập hợp và đưa vào mô hình CNN cùng với những ảnh x-ray thật để đánh giá. Kết quả mà mô hình đưa ra có độ chính xác >95% trong nhiều lần chạy thử. Nhóm đã thiết lập một interface để có thể upload ảnh từ bên ngoài vào cho mô hình, và mô hình sẽ in ra kết quả dự đoán trên màn hình.
 
 ![image](https://github.com/user-attachments/assets/6e091eb5-e98e-4968-b367-18e2047938d0)
+
+# NHỮNG HẠN CHẾ
+
+Dù các kết quả chạy thử cho kết quả khả quan, dự án vẫn còn 1 số vấn đề:
+1. **Chất lượng ảnh giả**
+
+Ảnh do GAN tạo ra dù có thể nhìn ra hình, tuy vậy vẫn chưa được rõ ràng và sắc nét như ảnh thật. Dù vậy, chất lượng ảnh giả không ảnh hưởng nhiều tới hiệu suất và độ hiệu quả của mô hình CNN.
+
+2. **Chất lượng dataset**
+
+Vì là ảnh x-ray thuộc lĩnh vực y tế nên không có nhiều dữ liệu cho mô hình có thể học và hoạt động hiệu quả.
+
+3. **Vấn đề về GPU**
+
+Nhóm cần phải có GPU xịn hơn để tăng tốc độ chạy và hiệu suất của mô hình.
 
