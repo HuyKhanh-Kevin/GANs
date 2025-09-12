@@ -7,7 +7,7 @@
 5. Nguyễn Trọng Nhân
 
 Dự án này nhằm mục đích sử dụng mạng đối kháng sinh **(GAN - Generative Adversarial Network)** để tạo ra ảnh y tế giả (fake medical images) và sau đó sử dụng mạng nơ-ron tích chập **(CNN - Convolutional Neural Network)** để phân loại và phân biệt ảnh thật và ảnh giả.
-Ứng dụng của phương pháp này có thể giúp cải thiện hiệu suất và độ chính xác trong việc phát hiện gian lận trong dữ liệu y tế, tăng cường dữ liệu cho các mô hình học sâu, hoặc đánh giá độ tin cậy của mô hình trong các bài toán nhận dạng hình ảnh y học. Dataset được nhóm tham khảo trên kaggle theo đường dẫn sau: [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia?select=chest_xray).
+Ứng dụng của phương pháp này có thể giúp cải thiện hiệu suất và độ chính xác trong việc phát hiện gian lận trong dữ liệu y tế, tăng cường dữ liệu cho các mô hình học sâu, hoặc đánh giá độ tin cậy của mô hình trong các bài toán nhận dạng hình ảnh y học. Dataset được nhóm tham khảo trên kaggle theo đường dẫn sau: [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia?select=chest_xray), [Dataset](https://drive.google.com/drive/folders/1UaS3t29I_5EK99yVaaxd8sNKlCrpPFsD?usp=sharing).
 # GAN
 Generative Adversarial Network (GAN) là một kiến trúc mạng học sâu, được thiết kế để tạo ra dữ liệu giả có tính chân thực cao. Mô hình GAN bao gồm hai mạng con chính là Generator (mạng sinh) và Discriminator (mạng phân biệt), hoạt động đối kháng với nhau trong quá trình huấn luyện. Generator cố gắng tạo ra các mẫu dữ liệu giả sao cho giống dữ liệu thật nhất có thể, trong khi Discriminator có nhiệm vụ phân biệt giữa dữ liệu thật và dữ liệu giả do Generator tạo ra. Cả hai mạng được huấn luyện đồng thời theo cơ chế cạnh tranh: khi Discriminator càng phân biệt tốt thì Generator phải càng tinh vi hơn để đánh lừa được nó. Qua nhiều vòng huấn luyện, Generator sẽ học được cách tạo ra dữ liệu giả với chất lượng ngày càng cao, đến mức khó có thể phân biệt được với dữ liệu thật.
 
@@ -19,6 +19,9 @@ Convolutional Neural Network (CNN) là một kiến trúc mạng nơ-ron sâu đ
 
 Trong phạm vi dự án này, CNN được sử dụng như một bộ phân loại để phân biệt giữa ảnh y tế thật và ảnh giả do GAN tạo ra. Mô hình CNN sẽ học cách nhận diện các đặc điểm đặc trưng mà ảnh giả không thể tái tạo hoàn hảo như ảnh thật, từ đó đưa ra dự đoán chính xác. Việc kết hợp CNN với GAN tạo thành một quy trình khép kín, trong đó GAN cung cấp dữ liệu tổng hợp để kiểm thử độ nhạy và khả năng phát hiện của CNN. Qua đó, nhóm có thể đánh giá hiệu quả của mô hình GAN trong việc sinh ảnh và đồng thời kiểm chứng năng lực phân loại của CNN trong các ứng dụng y tế, nơi mà tính chính xác và độ tin cậy là vô cùng quan trọng.
 
+Với mô hình CNN, nhóm đã hiện thực một mô hình CNN đơn giản, có cấu tạo gồm 4 convolution blocks để tăng số lượng kênh từ 1 -> 32 -> 64 -> 128 -> 256. Bên trong convolution block là một hệ thống gồm
+2 layers, cấu tạo của mỗi layer là Conv2D -> BatchNorm -> SiLU. 
+
 # KẾT QUẢ
 
 Thông qua mô hình GAN, nhóm đã tạo ra được 2550 ảnh x-ray giả để phục vụ cho công tác chuẩn bị dữ liệu. Đây là một vài bức ảnh do mô hình GAN của nhóm tạo ra.
@@ -28,7 +31,6 @@ Thông qua mô hình GAN, nhóm đã tạo ra được 2550 ảnh x-ray giả đ
 <img width="128" height="128" alt="label1_img0014" src="https://github.com/user-attachments/assets/46350f21-7145-45a0-b43c-3e3e0e42353a" />
 <img width="128" height="128" alt="label1_img0016" src="https://github.com/user-attachments/assets/b978c1c7-3bad-45a1-92e9-542d05505ec2" />
 
-
-
+Những bức ảnh này sau đó đã được tập hợp và đưa vào mô hình CNN cùng với những ảnh x-ray thật để đánh giá. Kết quả mà mô hình đưa ra có độ chính xác >95% trong nhiều lần chạy thử. Nhóm đã thiết lập một interface để có thể upload ảnh từ bên ngoài vào cho mô hình, và mô hình sẽ in ra kết quả dự đoán trên màn hình.
 
 
