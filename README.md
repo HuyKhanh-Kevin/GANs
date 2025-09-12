@@ -19,5 +19,16 @@ Convolutional Neural Network (CNN) là một kiến trúc mạng nơ-ron sâu đ
 
 Trong phạm vi dự án này, CNN được sử dụng như một bộ phân loại để phân biệt giữa ảnh y tế thật và ảnh giả do GAN tạo ra. Mô hình CNN sẽ học cách nhận diện các đặc điểm đặc trưng mà ảnh giả không thể tái tạo hoàn hảo như ảnh thật, từ đó đưa ra dự đoán chính xác. Việc kết hợp CNN với GAN tạo thành một quy trình khép kín, trong đó GAN cung cấp dữ liệu tổng hợp để kiểm thử độ nhạy và khả năng phát hiện của CNN. Qua đó, nhóm có thể đánh giá hiệu quả của mô hình GAN trong việc sinh ảnh và đồng thời kiểm chứng năng lực phân loại của CNN trong các ứng dụng y tế, nơi mà tính chính xác và độ tin cậy là vô cùng quan trọng.
 
+# KẾT QUẢ
+
+Thông qua mô hình GAN, nhóm đã tạo ra được 2550 ảnh x-ray giả để phục vụ cho công tác chuẩn bị dữ liệu. Đây là một vài bức ảnh do mô hình GAN của nhóm tạo ra.
+
+<img width="128" height="128" alt="label1_img0050" src="https://github.com/user-attachments/assets/3d9e6ba7-f7f1-4146-8946-ec9364bb8faf" />
+<img width="128" height="128" alt="label1_img0004" src="https://github.com/user-attachments/assets/f824866a-37cb-47dc-afd2-6f2d8bc68578" />
+<img width="128" height="128" alt="label1_img0014" src="https://github.com/user-attachments/assets/46350f21-7145-45a0-b43c-3e3e0e42353a" />
+<img width="128" height="128" alt="label1_img0016" src="https://github.com/user-attachments/assets/b978c1c7-3bad-45a1-92e9-542d05505ec2" />
+
+
+
 
 
