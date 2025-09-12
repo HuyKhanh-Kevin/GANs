@@ -33,4 +33,5 @@ Thông qua mô hình GAN, nhóm đã tạo ra được 2550 ảnh x-ray giả đ
 
 Những bức ảnh này sau đó đã được tập hợp và đưa vào mô hình CNN cùng với những ảnh x-ray thật để đánh giá. Kết quả mà mô hình đưa ra có độ chính xác >95% trong nhiều lần chạy thử. Nhóm đã thiết lập một interface để có thể upload ảnh từ bên ngoài vào cho mô hình, và mô hình sẽ in ra kết quả dự đoán trên màn hình.
 
+![image](https://github.com/user-attachments/assets/6e091eb5-e98e-4968-b367-18e2047938d0)
 
